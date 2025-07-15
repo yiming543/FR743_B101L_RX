@@ -37,8 +37,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "108
 [; ;mcc_generated_files/LINDrivers/lin_slave.h: 108: void LIN_sendPacket(uint8_t length, uint8_t pid, uint8_t* data);
 [v _LIN_sendPacket `(v ~T0 @X0 0 ef3`uc`uc`*uc ]
-"91 mcc_generated_files/LINDrivers/lin_slave.c
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 91: lin_rx_state_t LIN_handler(void){
+"92 mcc_generated_files/LINDrivers/lin_slave.c
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 92: lin_rx_state_t LIN_handler(void) {
 [c E204 0 1 2 3 4 5 6 7 8 9 .. ]
 [n E204 . LIN_RX_IDLE LIN_RX_BREAK LIN_RX_SYNC LIN_RX_PID LIN_RX_DATA LIN_RX_CHECKSUM LIN_RX_TX_DATA LIN_RX_RDY LIN_RX_ERROR LIN_RX_WAIT  ]
 "213 mcc_generated_files/LINDrivers/../eusart.h
@@ -56,8 +56,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "116 mcc_generated_files/LINDrivers/lin_slave.h
 [; ;mcc_generated_files/LINDrivers/lin_slave.h: 116: _Bool LIN_checkPID(uint8_t pid);
 [v _LIN_checkPID `(a ~T0 @X0 0 ef1`uc ]
-"138 mcc_generated_files/LINDrivers/lin_slave.c
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 138:                 LIN_packet.type = LIN_getFromTable(LIN_packet.PID, TYPE);
+"139 mcc_generated_files/LINDrivers/lin_slave.c
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 139:       LIN_packet.type = LIN_getFromTable(LIN_packet.PID, TYPE);
 [c E221 0 1 2 .. ]
 [n E221 . CMD TYPE LENGTH  ]
 "112 mcc_generated_files/LINDrivers/lin_slave.h
@@ -645,7 +645,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> -> 0 `i `a
 ]
 "50
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 50: const lin_rx_cmd_t* LIN_rxCommand;
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 50: const lin_rx_cmd_t *LIN_rxCommand;
 [v _LIN_rxCommand `*CS4 ~T0 @X0 1 e ]
 "51
 [; ;mcc_generated_files/LINDrivers/lin_slave.c: 51: uint8_t LIN_rxCommandLength;
@@ -669,425 +669,429 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> -> 0 `i `uc
 ]
 "57
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 57: void LIN_init(uint8_t tableLength, const lin_rx_cmd_t* const command, void (*processData)(void)){
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 57: void LIN_init(uint8_t tableLength, const lin_rx_cmd_t *const command,
 [v _LIN_init `(v ~T0 @X0 1 ef3`uc`C*CS4`*F3041 ]
+"58
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 58:               void (*processData)(void)) {
 {
 [e :U _LIN_init ]
+"57
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 57: void LIN_init(uint8_t tableLength, const lin_rx_cmd_t *const command,
 [v _tableLength `uc ~T0 @X0 1 r1 ]
 [v F3044 `*CS4 ~T0 @X0 1 t ]
 [v _command `C*CS4 ~T0 @X0 1 r2 ]
+"58
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 58:               void (*processData)(void)) {
 [v _processData `*F3046 ~T0 @X0 1 r3 ]
 [f ]
-"58
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 58:     LIN_rxCommand = command;
-[e = _LIN_rxCommand _command ]
 "59
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 59:     LIN_rxCommandLength = tableLength;
-[e = _LIN_rxCommandLength _tableLength ]
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 59:   LIN_rxCommand = command;
+[e = _LIN_rxCommand _command ]
 "60
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 60:     LIN_processData = processData;
-[e = _LIN_processData _processData ]
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 60:   LIN_rxCommandLength = tableLength;
+[e = _LIN_rxCommandLength _tableLength ]
 "61
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 61:     LIN_stopTimer();
-[e ( _LIN_stopTimer ..  ]
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 61:   LIN_processData = processData;
+[e = _LIN_processData _processData ]
 "62
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 62:     LIN_enableRx();
-[e ( _LIN_enableRx ..  ]
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 62:   LIN_stopTimer();
+[e ( _LIN_stopTimer ..  ]
 "63
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 63:     LIN_setTimerHandler();
-[e ( _LIN_setTimerHandler ..  ]
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 63:   LIN_enableRx();
+[e ( _LIN_enableRx ..  ]
 "64
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 64: }
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 64:   LIN_setTimerHandler();
+[e ( _LIN_setTimerHandler ..  ]
+"65
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 65: }
 [e :UE 362 ]
 }
-"66
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 66: void LIN_queuePacket(uint8_t cmd){
+"67
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 67: void LIN_queuePacket(uint8_t cmd) {
 [v _LIN_queuePacket `(v ~T0 @X0 1 ef1`uc ]
 {
 [e :U _LIN_queuePacket ]
 [v _cmd `uc ~T0 @X0 1 r1 ]
 [f ]
-"67
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 67:     const lin_rx_cmd_t* tempSchedule = LIN_rxCommand;
+"68
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 68:   const lin_rx_cmd_t *tempSchedule =
 [v _tempSchedule `*CS4 ~T0 @X0 1 a ]
 [e = _tempSchedule _LIN_rxCommand ]
-"69
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 69:     cmd &= 0x3F;
+"71
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 71:   cmd &= 0x3F;
 [e =& _cmd -> -> 63 `i `uc ]
-"70
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 70:     for(uint8_t i = 0; i < LIN_rxCommandLength; i++){
+"72
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 72:   for (uint8_t i = 0; i < LIN_rxCommandLength; i++) {
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `uc ]
 [e $U 367  ]
 [e :U 364 ]
 {
-"71
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 71:         if(cmd == tempSchedule->cmd){
+"73
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 73:     if (cmd == tempSchedule->cmd) {
 [e $ ! == -> _cmd `i -> . *U _tempSchedule 0 `i 368  ]
 {
-"72
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 72:             break;
-[e $U 365  ]
-"73
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 73:         }
-}
-[e :U 368 ]
 "74
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 74:         tempSchedule++;
-[e ++ _tempSchedule * -> -> 1 `i `x -> -> # *U _tempSchedule `i `x ]
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 74:       break;
+[e $U 365  ]
 "75
 [; ;mcc_generated_files/LINDrivers/lin_slave.c: 75:     }
+}
+[e :U 368 ]
+"76
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 76:     tempSchedule++;
+[e ++ _tempSchedule * -> -> 1 `i `x -> -> # *U _tempSchedule `i `x ]
+"77
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 77:   }
 }
 [e ++ _i -> -> 1 `i `uc ]
 [e :U 367 ]
 [e $ < -> _i `i -> _LIN_rxCommandLength `i 364  ]
 [e :U 365 ]
 }
-"77
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 77:     LIN_packet.type = tempSchedule->type;
+"79
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 79:   LIN_packet.type = tempSchedule->type;
 [e = . . _LIN_packet 0 3 . *U _tempSchedule 1 ]
-"78
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 78:     LIN_packet.length = tempSchedule->length;
+"80
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 80:   LIN_packet.length = tempSchedule->length;
 [e = . . _LIN_packet 0 4 -> . *U _tempSchedule 2 `c ]
-"82
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 82:     memcpy(LIN_packet.data, tempSchedule->data, LIN_packet.length);
+"84
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 84:   memcpy(LIN_packet.data, tempSchedule->data, LIN_packet.length);
 [e ( _memcpy (3 , , -> &U . . _LIN_packet 0 1 `*v -> . *U _tempSchedule 3 `*Cv -> -> . . _LIN_packet 0 4 `i `ui ]
-"85
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 85:     LIN_packet.checksum = LIN_getChecksum(LIN_packet.length, LIN_packet.PID, LIN_packet.data);
+"87
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 87:   LIN_packet.checksum =
 [e = . . _LIN_packet 0 2 ( _LIN_getChecksum (3 , , -> . . _LIN_packet 0 4 `uc . . _LIN_packet 0 0 &U . . _LIN_packet 0 1 ]
-"86
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 86:     LIN_sendPacket(LIN_packet.length, LIN_packet.PID, LIN_packet.data);
-[e ( _LIN_sendPacket (3 , , -> . . _LIN_packet 0 4 `uc . . _LIN_packet 0 0 &U . . _LIN_packet 0 1 ]
 "89
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 89: }
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 89:   LIN_sendPacket(LIN_packet.length, LIN_packet.PID, LIN_packet.data);
+[e ( _LIN_sendPacket (3 , , -> . . _LIN_packet 0 4 `uc . . _LIN_packet 0 0 &U . . _LIN_packet 0 1 ]
+"90
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 90: }
 [e :UE 363 ]
 }
-"91
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 91: lin_rx_state_t LIN_handler(void){
+"92
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 92: lin_rx_state_t LIN_handler(void) {
 [v _LIN_handler `(E204 ~T0 @X0 1 ef ]
 {
 [e :U _LIN_handler ]
 [f ]
-"92
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 92:     static lin_rx_state_t LIN_rxState = LIN_RX_IDLE;
+"93
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 93:   static lin_rx_state_t LIN_rxState = LIN_RX_IDLE;
 [v F3054 `E204 ~T0 @X0 1 s LIN_rxState ]
 [i F3054
 . `E204 0
 ]
-"93
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 93:     static uint8_t rxDataIndex = 0;
+"94
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 94:   static uint8_t rxDataIndex = 0;
 [v F3055 `uc ~T0 @X0 1 s rxDataIndex ]
 [i F3055
 -> -> 0 `i `uc
 ]
-"95
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 95:     if(LIN_rxInProgress == 1){
+"96
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 96:   if (LIN_rxInProgress == 1) {
 [e $ ! == -> _LIN_rxInProgress `i -> 1 `i 370  ]
 {
-"96
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 96:         if(LIN_timerRunning == 0){
+"97
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 97:     if (LIN_timerRunning == 0) {
 [e $ ! == -> _LIN_timerRunning `i -> 0 `i 371  ]
 {
-"98
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 98:             LIN_rxState = LIN_RX_ERROR;
-[e = F3054 . `E204 8 ]
 "99
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 99:         }
-}
-[e :U 371 ]
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 99:       LIN_rxState = LIN_RX_ERROR;
+[e = F3054 . `E204 8 ]
 "100
 [; ;mcc_generated_files/LINDrivers/lin_slave.c: 100:     }
 }
+[e :U 371 ]
+"101
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 101:   }
+}
 [e :U 370 ]
-"102
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 102:     switch(LIN_rxState){
+"103
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 103:   switch (LIN_rxState) {
 [e $U 373  ]
 {
-"103
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 103:         case LIN_RX_IDLE:
-[e :U 374 ]
 "104
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 104:             if(EUSART_is_rx_ready() > 0){
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 104:   case LIN_RX_IDLE:
+[e :U 374 ]
+"105
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 105:     if (EUSART_is_rx_ready() > 0) {
 [e $ ! > -> ( _EUSART_is_rx_ready ..  `i -> 0 `i 375  ]
 {
-"106
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 106:                 LIN_startTimer(15);
-[e ( _LIN_startTimer (1 -> -> 15 `i `uc ]
 "107
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 107:                 LIN_rxInProgress = 1;
-[e = _LIN_rxInProgress -> -> 1 `i `a ]
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 107:       LIN_startTimer(15);
+[e ( _LIN_startTimer (1 -> -> 15 `i `uc ]
 "108
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 108:                 LIN_rxState = LIN_RX_BREAK;
-[e = F3054 . `E204 1 ]
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 108:       LIN_rxInProgress = 1;
+[e = _LIN_rxInProgress -> -> 1 `i `a ]
 "109
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 109:             }
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 109:       LIN_rxState = LIN_RX_BREAK;
+[e = F3054 . `E204 1 ]
+"110
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 110:     }
 }
 [e :U 375 ]
-"110
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 110:             break;
-[e $U 372  ]
 "111
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 111:         case LIN_RX_BREAK:
-[e :U 376 ]
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 111:     break;
+[e $U 372  ]
 "112
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 112:             if(EUSART_is_rx_ready() > 0){
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 112:   case LIN_RX_BREAK:
+[e :U 376 ]
+"113
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 113:     if (EUSART_is_rx_ready() > 0) {
 [e $ ! > -> ( _EUSART_is_rx_ready ..  `i -> 0 `i 377  ]
 {
-"113
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 113:                 if(LIN_breakCheck() == 1){
+"114
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 114:       if (LIN_breakCheck() == 1) {
 [e $ ! == -> ( _LIN_breakCheck ..  `i -> 1 `i 378  ]
 {
-"114
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 114:                     LIN_rxState = LIN_RX_SYNC;
-[e = F3054 . `E204 2 ]
 "115
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 115:                 } else {
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 115:         LIN_rxState = LIN_RX_SYNC;
+[e = F3054 . `E204 2 ]
+"116
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 116:       } else {
 }
 [e $U 379  ]
 [e :U 378 ]
 {
-"116
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 116:                     LIN_rxState = LIN_RX_ERROR;
-[e = F3054 . `E204 8 ]
 "117
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 117:                 }
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 117:         LIN_rxState = LIN_RX_ERROR;
+[e = F3054 . `E204 8 ]
+"118
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 118:       }
 }
 [e :U 379 ]
-"118
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 118:             }
+"119
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 119:     }
 }
 [e :U 377 ]
-"119
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 119:             break;
-[e $U 372  ]
 "120
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 120:         case LIN_RX_SYNC:
-[e :U 380 ]
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 120:     break;
+[e $U 372  ]
 "121
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 121:             if(EUSART_is_rx_ready() > 0){
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 121:   case LIN_RX_SYNC:
+[e :U 380 ]
+"122
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 122:     if (EUSART_is_rx_ready() > 0) {
 [e $ ! > -> ( _EUSART_is_rx_ready ..  `i -> 0 `i 381  ]
 {
-"122
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 122:                 if(EUSART_Read() == 0x55){
+"123
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 123:       if (EUSART_Read() == 0x55) {
 [e $ ! == -> ( _EUSART_Read ..  `i -> 85 `i 382  ]
 {
-"123
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 123:                     LIN_rxState = LIN_RX_PID;
-[e = F3054 . `E204 3 ]
 "124
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 124:                 } else {
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 124:         LIN_rxState = LIN_RX_PID;
+[e = F3054 . `E204 3 ]
+"125
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 125:       } else {
 }
 [e $U 383  ]
 [e :U 382 ]
 {
-"125
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 125:                     LIN_rxState = LIN_RX_ERROR;
-[e = F3054 . `E204 8 ]
 "126
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 126:                 }
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 126:         LIN_rxState = LIN_RX_ERROR;
+[e = F3054 . `E204 8 ]
+"127
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 127:       }
 }
 [e :U 383 ]
-"127
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 127:             }
+"128
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 128:     }
 }
 [e :U 381 ]
-"128
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 128:             break;
-[e $U 372  ]
 "129
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 129:         case LIN_RX_PID:
-[e :U 384 ]
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 129:     break;
+[e $U 372  ]
 "130
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 130:             if(EUSART_is_rx_ready() > 0){
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 130:   case LIN_RX_PID:
+[e :U 384 ]
+"131
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 131:     if (EUSART_is_rx_ready() > 0) {
 [e $ ! > -> ( _EUSART_is_rx_ready ..  `i -> 0 `i 385  ]
 {
-"131
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 131:                 LIN_packet.PID = EUSART_Read();
+"132
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 132:       LIN_packet.PID = EUSART_Read();
 [e = . . _LIN_packet 0 0 ( _EUSART_Read ..  ]
-"134
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 134:                 if(LIN_checkPID(LIN_packet.PID) == 0){
+"135
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 135:       if (LIN_checkPID(LIN_packet.PID) == 0) {
 [e $ ! == -> ( _LIN_checkPID (1 . . _LIN_packet 0 0 `i -> 0 `i 386  ]
 {
-"135
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 135:                     LIN_rxState = LIN_RX_ERROR;
-[e = F3054 . `E204 8 ]
 "136
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 136:                     break;
-[e $U 372  ]
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 136:         LIN_rxState = LIN_RX_ERROR;
+[e = F3054 . `E204 8 ]
 "137
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 137:                 }
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 137:         break;
+[e $U 372  ]
+"138
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 138:       }
 }
 [e :U 386 ]
-"138
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 138:                 LIN_packet.type = LIN_getFromTable(LIN_packet.PID, TYPE);
-[e = . . _LIN_packet 0 3 -> ( _LIN_getFromTable (2 , . . _LIN_packet 0 0 . `E221 1 `E216 ]
 "139
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 139:                 if(LIN_packet.type == RECEIVE){
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 139:       LIN_packet.type = LIN_getFromTable(LIN_packet.PID, TYPE);
+[e = . . _LIN_packet 0 3 -> ( _LIN_getFromTable (2 , . . _LIN_packet 0 0 . `E221 1 `E216 ]
+"140
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 140:       if (LIN_packet.type == RECEIVE) {
 [e $ ! == -> . . _LIN_packet 0 3 `ui -> . `E216 1 `ui 387  ]
 {
-"140
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 140:                     LIN_packet.length = LIN_getFromTable(LIN_packet.PID, LENGTH);
-[e = . . _LIN_packet 0 4 -> ( _LIN_getFromTable (2 , . . _LIN_packet 0 0 . `E221 2 `c ]
 "141
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 141:                     LIN_rxState = LIN_RX_DATA;
-[e = F3054 . `E204 4 ]
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 141:         LIN_packet.length = LIN_getFromTable(LIN_packet.PID, LENGTH);
+[e = . . _LIN_packet 0 4 -> ( _LIN_getFromTable (2 , . . _LIN_packet 0 0 . `E221 2 `c ]
 "142
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 142:                 }
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 142:         LIN_rxState = LIN_RX_DATA;
+[e = F3054 . `E204 4 ]
+"143
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 143:       } else {
 }
 [e $U 388  ]
-"143
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 143:                 else{
 [e :U 387 ]
 {
 "144
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 144:                     LIN_disableRx();
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 144:         LIN_disableRx();
 [e ( _LIN_disableRx ..  ]
 "145
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 145:                     LIN_rxState = LIN_RX_TX_DATA;
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 145:         LIN_rxState = LIN_RX_TX_DATA;
 [e = F3054 . `E204 6 ]
 "146
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 146:                 }
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 146:       }
 }
 [e :U 388 ]
 "147
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 147:             }
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 147:     }
 }
 [e :U 385 ]
 "148
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 148:             break;
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 148:     break;
 [e $U 372  ]
 "149
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 149:         case LIN_RX_DATA:
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 149:   case LIN_RX_DATA:
 [e :U 389 ]
 "150
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 150:             if(EUSART_is_rx_ready() > 0){
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 150:     if (EUSART_is_rx_ready() > 0) {
 [e $ ! > -> ( _EUSART_is_rx_ready ..  `i -> 0 `i 390  ]
 {
 "151
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 151:                 LIN_packet.data[rxDataIndex] = EUSART_Read();
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 151:       LIN_packet.data[rxDataIndex] = EUSART_Read();
 [e = *U + &U . . _LIN_packet 0 1 * -> F3055 `ux -> -> # *U &U . . _LIN_packet 0 1 `ui `ux ( _EUSART_Read ..  ]
 "152
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 152:                 if(++rxDataIndex >= LIN_packet.length){
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 152:       if (++rxDataIndex >= LIN_packet.length) {
 [e $ ! >= -> =+ F3055 -> -> 1 `i `uc `i -> . . _LIN_packet 0 4 `i 391  ]
 {
 "154
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 154:                     rxDataIndex = 0;
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 154:         rxDataIndex = 0;
 [e = F3055 -> -> 0 `i `uc ]
 "155
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 155:                     LIN_rxState = LIN_RX_CHECKSUM;
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 155:         LIN_rxState = LIN_RX_CHECKSUM;
 [e = F3054 . `E204 5 ]
 "156
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 156:                 }
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 156:       }
 }
 [e :U 391 ]
 "157
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 157:             }
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 157:     }
 }
 [e :U 390 ]
 "158
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 158:             break;
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 158:     break;
 [e $U 372  ]
 "159
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 159:         case LIN_RX_CHECKSUM:
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 159:   case LIN_RX_CHECKSUM:
 [e :U 392 ]
 "160
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 160:             if(EUSART_is_rx_ready() > 0){
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 160:     if (EUSART_is_rx_ready() > 0) {
 [e $ ! > -> ( _EUSART_is_rx_ready ..  `i -> 0 `i 393  ]
 {
 "161
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 161:                 LIN_packet.checksum = EUSART_Read();
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 161:       LIN_packet.checksum = EUSART_Read();
 [e = . . _LIN_packet 0 2 ( _EUSART_Read ..  ]
 "162
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 162:                 if(LIN_packet.checksum != LIN_getChecksum(LIN_packet.length, LIN_packet.PID, LIN_packet.data)) {
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 162:       if (LIN_packet.checksum !=
 [e $ ! != -> . . _LIN_packet 0 2 `i -> ( _LIN_getChecksum (3 , , -> . . _LIN_packet 0 4 `uc . . _LIN_packet 0 0 &U . . _LIN_packet 0 1 `i 394  ]
-{
 "163
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 163:                     LIN_rxState = LIN_RX_ERROR;
-[e = F3054 . `E204 8 ]
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 163:           LIN_getChecksum(LIN_packet.length, LIN_packet.PID, LIN_packet.data)) {
+{
 "164
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 164:                 }
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 164:         LIN_rxState = LIN_RX_ERROR;
+[e = F3054 . `E204 8 ]
+"165
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 165:       } else {
 }
 [e $U 395  ]
-"165
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 165:                 else {
 [e :U 394 ]
 {
 "166
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 166:                     LIN_rxState = LIN_RX_RDY;
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 166:         LIN_rxState = LIN_RX_RDY;
 [e = F3054 . `E204 7 ]
 "167
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 167:                 }
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 167:       }
 }
 [e :U 395 ]
 "168
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 168:             }
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 168:     }
 }
 [e :U 393 ]
 "169
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 169:             break;
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 169:     break;
 [e $U 372  ]
 "170
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 170:         case LIN_RX_TX_DATA:
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 170:   case LIN_RX_TX_DATA:
 [e :U 396 ]
 "171
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 171:             LIN_queuePacket(LIN_packet.PID);
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 171:     LIN_queuePacket(LIN_packet.PID);
 [e ( _LIN_queuePacket (1 . . _LIN_packet 0 0 ]
 "172
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 172:             LIN_rxState = LIN_RX_RDY;
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 172:     LIN_rxState = LIN_RX_RDY;
 [e = F3054 . `E204 7 ]
 "173
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 173:         case LIN_RX_RDY:
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 173:   case LIN_RX_RDY:
 [e :U 397 ]
 "174
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 174:             LIN_processData();
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 174:     LIN_processData();
 [e ( *U _LIN_processData ..  ]
 "175
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 175:         case LIN_RX_ERROR:
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 175:   case LIN_RX_ERROR:
 [e :U 398 ]
 "176
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 176:             LIN_stopTimer();
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 176:     LIN_stopTimer();
 [e ( _LIN_stopTimer ..  ]
 "177
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 177:             rxDataIndex = 0;
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 177:     rxDataIndex = 0;
 [e = F3055 -> -> 0 `i `uc ]
 "178
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 178:             LIN_rxInProgress = 0;
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 178:     LIN_rxInProgress = 0;
 [e = _LIN_rxInProgress -> -> 0 `i `a ]
 "179
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 179:             memset(LIN_packet.rawPacket, 0, sizeof(LIN_packet.rawPacket));
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 179:     memset(LIN_packet.rawPacket, 0,
 [e ( _memset (3 , , -> &U . _LIN_packet 1 `*v -> 0 `i * -> # *U &U . _LIN_packet 1 `ui -> -> 13 `i `ui ]
-"180
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 180:         case LIN_RX_WAIT:
-[e :U 399 ]
 "181
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 181:             if(TXSTAbits.TRMT){
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 181:   case LIN_RX_WAIT:
+[e :U 399 ]
+"182
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 182:     if (TXSTAbits.TRMT) {
 [e $ ! != -> . . _TXSTAbits 0 1 `i -> 0 `i 400  ]
 {
-"182
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 182:                 LIN_enableRx();
-[e ( _LIN_enableRx ..  ]
 "183
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 183:                 LIN_rxState = LIN_RX_IDLE;
-[e = F3054 . `E204 0 ]
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 183:       LIN_enableRx();
+[e ( _LIN_enableRx ..  ]
 "184
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 184:             } else {
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 184:       LIN_rxState = LIN_RX_IDLE;
+[e = F3054 . `E204 0 ]
+"185
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 185:     } else {
 }
 [e $U 401  ]
 [e :U 400 ]
 {
-"185
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 185:                 LIN_rxState = LIN_RX_WAIT;
-[e = F3054 . `E204 9 ]
 "186
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 186:             }
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 186:       LIN_rxState = LIN_RX_WAIT;
+[e = F3054 . `E204 9 ]
+"187
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 187:     }
 }
 [e :U 401 ]
-"187
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 187:             break;
-[e $U 372  ]
 "188
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 188:     }
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 188:     break;
+[e $U 372  ]
+"189
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 189:   }
 }
 [e $U 372  ]
 [e :U 373 ]
@@ -1103,16 +1107,16 @@ Version 4.0 HI-TECH Software Intermediate Code
  , $ -> . `E204 9 `ui 399
  372 ]
 [e :U 372 ]
-"189
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 189:     return LIN_rxState;
+"190
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 190:   return LIN_rxState;
 [e ) F3054 ]
 [e $UE 369  ]
-"190
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 190: }
+"191
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 191: }
 [e :UE 369 ]
 }
-"192
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 192: void LIN_sendPacket(uint8_t length, uint8_t pid, uint8_t* data){
+"193
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 193: void LIN_sendPacket(uint8_t length, uint8_t pid, uint8_t *data) {
 [v _LIN_sendPacket `(v ~T0 @X0 1 ef3`uc`uc`*uc ]
 {
 [e :U _LIN_sendPacket ]
@@ -1120,91 +1124,91 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _pid `uc ~T0 @X0 1 r2 ]
 [v _data `*uc ~T0 @X0 1 r3 ]
 [f ]
-"195
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 195:     for(uint8_t i = 0; i < length; i++){
+"196
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 196:   for (uint8_t i = 0; i < length; i++) {
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `uc ]
 [e $U 406  ]
 [e :U 403 ]
 {
-"196
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 196:         EUSART_Write(*(data + i));
-[e ( _EUSART_Write (1 *U + _data * -> -> _i `i `x -> -> # *U _data `i `x ]
 "197
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 197:     }
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 197:     EUSART_Write(*(data + i));
+[e ( _EUSART_Write (1 *U + _data * -> -> _i `i `x -> -> # *U _data `i `x ]
+"198
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 198:   }
 }
 [e ++ _i -> -> 1 `i `uc ]
 [e :U 406 ]
 [e $ < -> _i `i -> _length `i 403  ]
 [e :U 404 ]
 }
-"199
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 199:     EUSART_Write(LIN_getChecksum(length, pid, data));
-[e ( _EUSART_Write (1 ( _LIN_getChecksum (3 , , _length _pid _data ]
 "200
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 200: }
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 200:   EUSART_Write(LIN_getChecksum(length, pid, data));
+[e ( _EUSART_Write (1 ( _LIN_getChecksum (3 , , _length _pid _data ]
+"201
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 201: }
 [e :UE 402 ]
 }
-"202
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 202: uint8_t LIN_getPacket(uint8_t* data){
+"203
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 203: uint8_t LIN_getPacket(uint8_t *data) {
 [v _LIN_getPacket `(uc ~T0 @X0 1 ef1`*uc ]
 {
 [e :U _LIN_getPacket ]
 [v _data `*uc ~T0 @X0 1 r1 ]
 [f ]
-"203
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 203:     uint8_t cmd = LIN_packet.PID & 0x3F;
+"204
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 204:   uint8_t cmd = LIN_packet.PID & 0x3F;
 [v _cmd `uc ~T0 @X0 1 a ]
 [e = _cmd -> & -> . . _LIN_packet 0 0 `i -> 63 `i `uc ]
-"205
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 205:     if(cmd != 0){
+"206
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 206:   if (cmd != 0) {
 [e $ ! != -> _cmd `i -> 0 `i 408  ]
 {
-"206
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 206:         __nop();
-[e ( ___nop ..  ]
 "207
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 207:         __nop();
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 207:     __nop();
 [e ( ___nop ..  ]
 "208
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 208:         __nop();
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 208:     __nop();
 [e ( ___nop ..  ]
 "209
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 209:     }
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 209:     __nop();
+[e ( ___nop ..  ]
+"210
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 210:   }
 }
 [e :U 408 ]
-"211
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 211:     memcpy(data, LIN_packet.data, sizeof(LIN_packet.data));
-[e ( _memcpy (3 , , -> _data `*v -> &U . . _LIN_packet 0 1 `*Cv * -> # *U &U . . _LIN_packet 0 1 `ui -> -> 8 `i `ui ]
 "212
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 212:     memset(LIN_packet.rawPacket, 0, sizeof(LIN_packet.rawPacket));
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 212:   memcpy(data, LIN_packet.data, sizeof(LIN_packet.data));
+[e ( _memcpy (3 , , -> _data `*v -> &U . . _LIN_packet 0 1 `*Cv * -> # *U &U . . _LIN_packet 0 1 `ui -> -> 8 `i `ui ]
+"213
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 213:   memset(LIN_packet.rawPacket, 0, sizeof(LIN_packet.rawPacket));
 [e ( _memset (3 , , -> &U . _LIN_packet 1 `*v -> 0 `i * -> # *U &U . _LIN_packet 1 `ui -> -> 13 `i `ui ]
-"216
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 216:     return cmd;
+"215
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 215:   return cmd;
 [e ) _cmd ]
 [e $UE 407  ]
-"217
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 217: }
+"216
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 216: }
 [e :UE 407 ]
 }
-"219
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 219: uint8_t LIN_getFromTable(uint8_t cmd, lin_sch_param_t param){
+"218
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 218: uint8_t LIN_getFromTable(uint8_t cmd, lin_sch_param_t param) {
 [v _LIN_getFromTable `(uc ~T0 @X0 1 ef2`uc`E221 ]
 {
 [e :U _LIN_getFromTable ]
 [v _cmd `uc ~T0 @X0 1 r1 ]
 [v _param `E221 ~T0 @X0 1 r2 ]
 [f ]
-"220
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 220:     const lin_rx_cmd_t* rxCommand = LIN_rxCommand;
+"219
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 219:   const lin_rx_cmd_t *rxCommand =
 [v _rxCommand `*CS4 ~T0 @X0 1 a ]
 [e = _rxCommand _LIN_rxCommand ]
 "222
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 222:     cmd &= 0x3F;
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 222:   cmd &= 0x3F;
 [e =& _cmd -> -> 63 `i `uc ]
 "224
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 224:     for(uint8_t length = 0; length < LIN_rxCommandLength; length++){
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 224:   for (uint8_t length = 0; length < LIN_rxCommandLength; length++) {
 {
 [v _length `uc ~T0 @X0 1 a ]
 [e = _length -> -> 0 `i `uc ]
@@ -1212,33 +1216,33 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U 410 ]
 {
 "225
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 225:         if(cmd == rxCommand->cmd){
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 225:     if (cmd == rxCommand->cmd) {
 [e $ ! == -> _cmd `i -> . *U _rxCommand 0 `i 414  ]
 {
 "226
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 226:             break;
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 226:       break;
 [e $U 411  ]
 "227
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 227:         }
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 227:     }
 }
 [e :U 414 ]
 "228
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 228:         rxCommand++;
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 228:     rxCommand++;
 [e ++ _rxCommand * -> -> 1 `i `x -> -> # *U _rxCommand `i `x ]
 "230
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 230:         if(length == (LIN_rxCommandLength-1)){
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 230:     if (length == (LIN_rxCommandLength - 1)) {
 [e $ ! == -> _length `i - -> _LIN_rxCommandLength `i -> 1 `i 415  ]
 {
 "231
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 231:             return ERROR;
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 231:       return ERROR;
 [e ) -> . `E216 2 `uc ]
 [e $UE 409  ]
 "232
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 232:         }
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 232:     }
 }
 [e :U 415 ]
 "233
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 233:     }
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 233:   }
 }
 [e ++ _length -> -> 1 `i `uc ]
 [e :U 413 ]
@@ -1246,38 +1250,38 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U 411 ]
 }
 "235
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 235:     switch(param){
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 235:   switch (param) {
 [e $U 417  ]
 {
 "236
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 236:         case CMD:
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 236:   case CMD:
 [e :U 418 ]
 "237
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 237:             return rxCommand->cmd;
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 237:     return rxCommand->cmd;
 [e ) . *U _rxCommand 0 ]
 [e $UE 409  ]
 "238
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 238:         case TYPE:
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 238:   case TYPE:
 [e :U 419 ]
 "239
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 239:             return rxCommand->type;
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 239:     return rxCommand->type;
 [e ) -> . *U _rxCommand 1 `uc ]
 [e $UE 409  ]
 "240
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 240:         case LENGTH:
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 240:   case LENGTH:
 [e :U 420 ]
 "241
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 241:             return rxCommand->length;
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 241:     return rxCommand->length;
 [e ) . *U _rxCommand 2 ]
 [e $UE 409  ]
 "242
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 242:         default:
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 242:   default:
 [e :U 421 ]
 "243
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 243:             break;
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 243:     break;
 [e $U 416  ]
 "244
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 244:     }
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 244:   }
 }
 [e $U 416  ]
 [e :U 417 ]
@@ -1287,7 +1291,7 @@ Version 4.0 HI-TECH Software Intermediate Code
  421 ]
 [e :U 416 ]
 "246
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 246:     return ERROR;
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 246:   return ERROR;
 [e ) -> . `E216 2 `uc ]
 [e $UE 409  ]
 "247
@@ -1295,80 +1299,80 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :UE 409 ]
 }
 "249
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 249: _Bool LIN_checkPID(uint8_t pid){
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 249: _Bool LIN_checkPID(uint8_t pid) {
 [v _LIN_checkPID `(a ~T0 @X0 1 ef1`uc ]
 {
 [e :U _LIN_checkPID ]
 [v _pid `uc ~T0 @X0 1 r1 ]
 [f ]
 "250
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 250:     if(LIN_getFromTable(pid, TYPE) == ERROR)
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 250:   if (LIN_getFromTable(pid, TYPE) == ERROR)
 [e $ ! == -> ( _LIN_getFromTable (2 , _pid . `E221 1 `i -> . `E216 2 `i 423  ]
 "251
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 251:         return 0;
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 251:     return 0;
 [e ) -> -> 0 `i `a ]
 [e $UE 422  ]
 [e :U 423 ]
 "253
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 253:     if(pid == LIN_calcParity(pid & 0x3F))
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 253:   if (pid == LIN_calcParity(pid & 0x3F))
 [e $ ! == -> _pid `i -> ( _LIN_calcParity (1 -> & -> _pid `i -> 63 `i `uc `i 424  ]
 "254
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 254:         return 1;
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 254:     return 1;
 [e ) -> -> 1 `i `a ]
 [e $UE 422  ]
 [e :U 424 ]
 "256
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 256:     return 0;
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 256:   return 0;
 [e ) -> -> 0 `i `a ]
 [e $UE 422  ]
-"258
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 258: }
+"257
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 257: }
 [e :UE 422 ]
 }
-"260
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 260: uint8_t LIN_calcParity(uint8_t CMD){
+"259
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 259: uint8_t LIN_calcParity(uint8_t CMD) {
 [v _LIN_calcParity `(uc ~T0 @X0 1 ef1`uc ]
 {
 [e :U _LIN_calcParity ]
 [v _CMD `uc ~T0 @X0 1 r1 ]
 [f ]
-"261
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 261:     lin_pid_t PID;
+"260
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 260:   lin_pid_t PID;
 [v _PID `S5 ~T0 @X0 1 a ]
-"262
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 262:     PID.rawPID = CMD;
+"261
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 261:   PID.rawPID = CMD;
 [e = . _PID 1 _CMD ]
-"267
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 267:     PID.P0 = PID.ID0 ^ PID.ID1;
+"266
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 266:   PID.P0 = PID.ID0 ^ PID.ID1;
 [e = . . _PID 0 6 -> ^ -> . . _PID 0 0 `i -> . . _PID 0 1 `i `uc ]
-"268
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 268:     PID.P0 = PID.P0 ^ PID.ID2;
+"267
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 267:   PID.P0 = PID.P0 ^ PID.ID2;
 [e = . . _PID 0 6 -> ^ -> . . _PID 0 6 `i -> . . _PID 0 2 `i `uc ]
-"269
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 269:     PID.P0 = PID.P0 ^ PID.ID4;
+"268
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 268:   PID.P0 = PID.P0 ^ PID.ID4;
 [e = . . _PID 0 6 -> ^ -> . . _PID 0 6 `i -> . . _PID 0 4 `i `uc ]
-"270
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 270:     PID.P1 = PID.ID1 ^ PID.ID3;
+"269
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 269:   PID.P1 = PID.ID1 ^ PID.ID3;
 [e = . . _PID 0 7 -> ^ -> . . _PID 0 1 `i -> . . _PID 0 3 `i `uc ]
-"271
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 271:     PID.P1 = PID.P1 ^ PID.ID4;
+"270
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 270:   PID.P1 = PID.P1 ^ PID.ID4;
 [e = . . _PID 0 7 -> ^ -> . . _PID 0 7 `i -> . . _PID 0 4 `i `uc ]
-"272
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 272:     PID.P1 = PID.P1 ^ PID.ID5;
+"271
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 271:   PID.P1 = PID.P1 ^ PID.ID5;
 [e = . . _PID 0 7 -> ^ -> . . _PID 0 7 `i -> . . _PID 0 5 `i `uc ]
-"273
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 273:     PID.P1 = ~PID.P1;
+"272
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 272:   PID.P1 = ~PID.P1;
 [e = . . _PID 0 7 -> ~ -> . . _PID 0 7 `i `uc ]
-"275
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 275:     return PID.rawPID;
+"274
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 274:   return PID.rawPID;
 [e ) . _PID 1 ]
 [e $UE 425  ]
-"276
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 276: }
+"275
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 275: }
 [e :UE 425 ]
 }
-"278
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 278: uint8_t LIN_getChecksum(uint8_t length, uint8_t pid, uint8_t* data){
+"277
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 277: uint8_t LIN_getChecksum(uint8_t length, uint8_t pid, uint8_t *data) {
 [v _LIN_getChecksum `(uc ~T0 @X0 1 ef3`uc`uc`*uc ]
 {
 [e :U _LIN_getChecksum ]
@@ -1376,180 +1380,174 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _pid `uc ~T0 @X0 1 r2 ]
 [v _data `*uc ~T0 @X0 1 r3 ]
 [f ]
-"279
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 279:     uint16_t checksum = pid;
+"278
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 278:   uint16_t checksum = pid;
 [v _checksum `us ~T0 @X0 1 a ]
 [e = _checksum -> _pid `us ]
-"281
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 281:     for (uint8_t i = 0; i < length; i++){
+"280
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 280:   for (uint8_t i = 0; i < length; i++) {
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `uc ]
 [e $U 430  ]
 [e :U 427 ]
 {
-"282
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 282:         checksum = checksum + *data++;
+"281
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 281:     checksum = checksum + *data++;
 [e = _checksum -> + -> _checksum `ui -> *U ++ _data * -> -> 1 `i `x -> -> # *U _data `i `x `ui `us ]
-"283
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 283:         if(checksum > 0xFF)
+"282
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 282:     if (checksum > 0xFF)
 [e $ ! > -> _checksum `ui -> -> 255 `i `ui 431  ]
-"284
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 284:             checksum -= 0xFF;
+"283
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 283:       checksum -= 0xFF;
 [e =- _checksum -> -> 255 `i `us ]
 [e :U 431 ]
-"285
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 285:     }
+"284
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 284:   }
 }
 [e ++ _i -> -> 1 `i `uc ]
 [e :U 430 ]
 [e $ < -> _i `i -> _length `i 427  ]
 [e :U 428 ]
 }
-"286
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 286:     checksum = ~checksum;
+"285
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 285:   checksum = ~checksum;
 [e = _checksum -> ~ -> _checksum `ui `us ]
-"288
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 288:     return (uint8_t)checksum;
+"287
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 287:   return (uint8_t)checksum;
 [e ) -> _checksum `uc ]
 [e $UE 426  ]
-"289
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 289: }
+"288
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 288: }
 [e :UE 426 ]
 }
-"291
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 291: void LIN_startTimer(uint8_t timeout){
+"290
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 290: void LIN_startTimer(uint8_t timeout) {
 [v _LIN_startTimer `(v ~T0 @X0 1 ef1`uc ]
 {
 [e :U _LIN_startTimer ]
 [v _timeout `uc ~T0 @X0 1 r1 ]
 [f ]
-"292
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 292:     LIN_timeout = timeout;
+"291
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 291:   LIN_timeout = timeout;
 [e = _LIN_timeout _timeout ]
-"293
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 293:     TMR0_WriteTimer(0);
+"292
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 292:   TMR0_WriteTimer(0);
 [e ( _TMR0_WriteTimer (1 -> -> 0 `i `uc ]
-"294
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 294:     __nop();
+"293
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 293:   __nop();
 [e ( ___nop ..  ]
-"295
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 295:     LIN_timerRunning = 1;
+"294
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 294:   LIN_timerRunning = 1;
 [e = _LIN_timerRunning -> -> 1 `i `a ]
-"296
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 296: }
+"295
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 295: }
 [e :UE 432 ]
 }
-"298
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 298: void LIN_timerHandler(void){
+"297
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 297: void LIN_timerHandler(void) {
 [v _LIN_timerHandler `(v ~T0 @X0 1 ef ]
 {
 [e :U _LIN_timerHandler ]
 [f ]
-"301
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 301:     if (++CountCallBack >= LIN_timeout)
+"300
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 300:   if (++CountCallBack >= LIN_timeout) {
 [e $ ! >= -> =+ _CountCallBack -> -> 1 `i `Vuc `i -> _LIN_timeout `i 434  ]
-"302
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 302:     {
 {
-"304
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 304:         LIN_stopTimer();
+"302
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 302:     LIN_stopTimer();
 [e ( _LIN_stopTimer ..  ]
-"305
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 305:     }
+"303
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 303:   }
 }
 [e :U 434 ]
-"306
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 306: }
+"304
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 304: }
 [e :UE 433 ]
 }
-"308
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 308: void LIN_setTimerHandler(void){
+"306
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 306: void LIN_setTimerHandler(void) { TMR0_SetInterruptHandler(LIN_timerHandler); }
 [v _LIN_setTimerHandler `(v ~T0 @X0 1 ef ]
 {
 [e :U _LIN_setTimerHandler ]
 [f ]
-"309
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 309:     TMR0_SetInterruptHandler(LIN_timerHandler);
 [e ( _TMR0_SetInterruptHandler (1 &U _LIN_timerHandler ]
-"310
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 310: }
 [e :UE 435 ]
 }
-"312
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 312: void LIN_stopTimer(void){
+"308
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 308: void LIN_stopTimer(void) {
 [v _LIN_stopTimer `(v ~T0 @X0 1 ef ]
 {
 [e :U _LIN_stopTimer ]
 [f ]
-"313
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 313:     __nop();
+"309
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 309:   __nop();
 [e ( ___nop ..  ]
-"315
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 315:     CountCallBack = 0;
+"311
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 311:   CountCallBack = 0;
 [e = _CountCallBack -> -> 0 `i `uc ]
-"316
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 316:     LIN_timerRunning = 0;
+"312
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 312:   LIN_timerRunning = 0;
 [e = _LIN_timerRunning -> -> 0 `i `a ]
-"317
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 317: }
+"313
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 313: }
 [e :UE 436 ]
 }
-"319
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 319: void LIN_enableRx(void){
+"315
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 315: void LIN_enableRx(void) {
 [v _LIN_enableRx `(v ~T0 @X0 1 ef ]
 {
 [e :U _LIN_enableRx ]
 [f ]
-"320
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 320:     RCSTAbits.CREN = 1;
+"316
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 316:   RCSTAbits.CREN = 1;
 [e = . . _RCSTAbits 0 4 -> -> 1 `i `uc ]
-"321
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 321:     PIE1bits.RCIE = 1;
+"317
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 317:   PIE1bits.RCIE = 1;
 [e = . . _PIE1bits 0 5 -> -> 1 `i `uc ]
-"322
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 322: }
+"318
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 318: }
 [e :UE 437 ]
 }
-"324
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 324: void LIN_disableRx(void){
+"320
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 320: void LIN_disableRx(void) {
 [v _LIN_disableRx `(v ~T0 @X0 1 ef ]
 {
 [e :U _LIN_disableRx ]
 [f ]
-"325
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 325:     RCSTAbits.CREN = 0;
+"321
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 321:   RCSTAbits.CREN = 0;
 [e = . . _RCSTAbits 0 4 -> -> 0 `i `uc ]
-"326
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 326:     PIE1bits.RCIE = 0;
+"322
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 322:   PIE1bits.RCIE = 0;
 [e = . . _PIE1bits 0 5 -> -> 0 `i `uc ]
-"327
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 327: }
+"323
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 323: }
 [e :UE 438 ]
 }
-"329
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 329: _Bool LIN_breakCheck(void){
+"325
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 325: _Bool LIN_breakCheck(void) {
 [v _LIN_breakCheck `(a ~T0 @X0 1 ef ]
 {
 [e :U _LIN_breakCheck ]
 [f ]
-"331
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 331:     if((EUSART_Read() == 0x00) && (EUSART_get_last_status().ferr == 1)){
+"327
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 327:   if ((EUSART_Read() == 0x00) && (EUSART_get_last_status().ferr == 1)) {
 [e $ ! && == -> ( _EUSART_Read ..  `i -> 0 `i == -> . . ( _EUSART_get_last_status ..  0 1 `i -> 1 `i 440  ]
 {
-"332
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 332:         return 1;
+"328
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 328:     return 1;
 [e ) -> -> 1 `i `a ]
 [e $UE 439  ]
-"333
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 333:     }
+"329
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 329:   }
 }
 [e :U 440 ]
-"335
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 335:     return 0;
+"331
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 331:   return 0;
 [e ) -> -> 0 `i `a ]
 [e $UE 439  ]
-"336
-[; ;mcc_generated_files/LINDrivers/lin_slave.c: 336: }
+"332
+[; ;mcc_generated_files/LINDrivers/lin_slave.c: 332: }
 [e :UE 439 ]
 }

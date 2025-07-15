@@ -11,6 +11,27 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;./mcc_generated_files/LINDrivers/lin_app.h: 53: const lin_rx_cmd_t scheduleTable[] = {
 [c E3353 1 .. ]
 [n E3353 . SW_STATE  ]
+"3650 C:/Users/t00904/.mchp_packs/Microchip/PIC12-16F1xxx_DFP/1.2.63/xc8\pic\include\proc/pic16f1936.h
+[; ;C:/Users/t00904/.mchp_packs/Microchip/PIC12-16F1xxx_DFP/1.2.63/xc8\pic\include\proc/pic16f1936.h: 3650:     struct {
+[s S191 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S191 . ABDEN WUE . BRG16 SCKP . RCIDL ABDOVF ]
+"3649
+[; ;C:/Users/t00904/.mchp_packs/Microchip/PIC12-16F1xxx_DFP/1.2.63/xc8\pic\include\proc/pic16f1936.h: 3649: typedef union {
+[u S190 `S191 1 ]
+[n S190 . . ]
+"3661
+[; ;C:/Users/t00904/.mchp_packs/Microchip/PIC12-16F1xxx_DFP/1.2.63/xc8\pic\include\proc/pic16f1936.h: 3661: extern volatile BAUDCONbits_t BAUDCONbits __attribute__((address(0x19F)));
+[v _BAUDCONbits `VS190 ~T0 @X0 0 e@415 ]
+[v F2674 `(v ~T0 @X0 1 tf1`ul ]
+"92 C:/Users/t00904/.mchp_packs/Microchip/PIC12-16F1xxx_DFP/1.2.63/xc8\pic\include/pic.h
+[v __delay `JF2674 ~T0 @X0 0 e ]
+[p i __delay ]
+"3381 C:/Users/t00904/.mchp_packs/Microchip/PIC12-16F1xxx_DFP/1.2.63/xc8\pic\include\proc/pic16f1936.h
+[; ;C:/Users/t00904/.mchp_packs/Microchip/PIC12-16F1xxx_DFP/1.2.63/xc8\pic\include\proc/pic16f1936.h: 3381: extern volatile unsigned char RCREG __attribute__((address(0x199)));
+[v _RCREG `Vuc ~T0 @X0 0 e@409 ]
+"31 C:/Users/t00904/.mchp_packs/Microchip/PIC12-16F1xxx_DFP/1.2.63/xc8\pic\include/pic.h
+[v ___nop `(v ~T0 @X0 0 ef ]
+[p i ___nop ]
 [p mainexit ]
 "73 ./mcc_generated_files/mcc.h
 [; ;./mcc_generated_files/mcc.h: 73: void SYSTEM_Initialize(void);
@@ -30,8 +51,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "374
 [; ;C:/Users/t00904/.mchp_packs/Microchip/PIC12-16F1xxx_DFP/1.2.63/xc8\pic\include\proc/pic16f1936.h: 374: extern volatile INTCONbits_t INTCONbits __attribute__((address(0x00B)));
 [v _INTCONbits `VS30 ~T0 @X0 0 e@11 ]
-"81 main.c
-[; ;main.c: 81:     LIN_handler();
+"114 main.c
+[; ;main.c: 114:     LIN_handler();
 [c E3266 0 1 2 3 4 5 6 7 8 9 .. ]
 [n E3266 . LIN_RX_IDLE LIN_RX_BREAK LIN_RX_SYNC LIN_RX_PID LIN_RX_DATA LIN_RX_CHECKSUM LIN_RX_TX_DATA LIN_RX_RDY LIN_RX_ERROR LIN_RX_WAIT  ]
 "114 ./mcc_generated_files/LINDrivers/lin_slave.h
@@ -548,40 +569,127 @@ Version 4.0 HI-TECH Software Intermediate Code
 ..
 ..
 ]
-[v $root$_main `(v ~T0 @X0 0 e ]
-"58 main.c
-[; ;main.c: 58: void main(void)
-[v _main `(v ~T0 @X0 1 ef ]
-"59
-[; ;main.c: 59: {
+"61 main.c
+[; ;main.c: 61: void AutoBaud_Detect(void) {
+[v _AutoBaud_Detect `(v ~T0 @X0 1 ef ]
 {
-[e :U _main ]
+[e :U _AutoBaud_Detect ]
 [f ]
-"61
-[; ;main.c: 61:   SYSTEM_Initialize();
-[e ( _SYSTEM_Initialize ..  ]
-"67
-[; ;main.c: 67:   (INTCONbits.GIE = 1);
-[e = . . _INTCONbits 0 7 -> -> 1 `i `uc ]
-"70
-[; ;main.c: 70:   (INTCONbits.PEIE = 1);
-[e = . . _INTCONbits 0 6 -> -> 1 `i `uc ]
-"78
-[; ;main.c: 78:   while (1)
-[e :U 366 ]
-"79
-[; ;main.c: 79:   {
+"62
+[; ;main.c: 62:   uint8_t sync;
+[v _sync `uc ~T0 @X0 1 a ]
+"64
+[; ;main.c: 64:   for (uint8_t i = 0; i < 3; i++) {
 {
+[v _i `uc ~T0 @X0 1 a ]
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 3 `i 365  ]
+[e $U 366  ]
+[e :U 365 ]
+{
+"66
+[; ;main.c: 66:     BAUDCONbits.ABDOVF = 0;
+[e = . . _BAUDCONbits 0 7 -> -> 0 `i `uc ]
+"67
+[; ;main.c: 67:     BAUDCONbits.ABDEN = 1;
+[e = . . _BAUDCONbits 0 0 -> -> 1 `i `uc ]
+"68
+[; ;main.c: 68:     BAUDCONbits.WUE = 1;
+[e = . . _BAUDCONbits 0 1 -> -> 1 `i `uc ]
+"70
+[; ;main.c: 70:     while (!BAUDCONbits.ABDOVF) {
+[e $U 368  ]
+[e :U 369 ]
+{
+"71
+[; ;main.c: 71:       if (!BAUDCONbits.ABDEN) {
+[e $ ! ! != -> . . _BAUDCONbits 0 0 `i -> 0 `i 371  ]
+{
+"72
+[; ;main.c: 72:         break;
+[e $U 370  ]
+"73
+[; ;main.c: 73:       }
+}
+[e :U 371 ]
+"74
+[; ;main.c: 74:     }
+}
+[e :U 368 ]
+"70
+[; ;main.c: 70:     while (!BAUDCONbits.ABDOVF) {
+[e $ ! != -> . . _BAUDCONbits 0 7 `i -> 0 `i 369  ]
+[e :U 370 ]
+"76
+[; ;main.c: 76:     if (!BAUDCONbits.ABDOVF) {
+[e $ ! ! != -> . . _BAUDCONbits 0 7 `i -> 0 `i 372  ]
+{
+"77
+[; ;main.c: 77:       break;
+[e $U 366  ]
+"78
+[; ;main.c: 78:     } else {
+}
+[e $U 373  ]
+[e :U 372 ]
+{
+"79
+[; ;main.c: 79:       _delay((unsigned long)((100)*(32000000/4000.0)));
+[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 32000000 `l `d .4000.0 `ul ]
+"80
+[; ;main.c: 80:     }
+}
+[e :U 373 ]
 "81
-[; ;main.c: 81:     LIN_handler();
-[e ( _LIN_handler ..  ]
+[; ;main.c: 81:     sync = RCREG;
+[e = _sync _RCREG ]
 "82
 [; ;main.c: 82:   }
 }
-[e :U 365 ]
-[e $U 366  ]
-[e :U 367 ]
-"83
-[; ;main.c: 83: }
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 3 `i 365  ]
+[e :U 366 ]
+}
+"84
+[; ;main.c: 84:   __nop();
+[e ( ___nop ..  ]
+"85
+[; ;main.c: 85: }
 [e :UE 364 ]
+}
+[v $root$_main `(v ~T0 @X0 0 e ]
+"90
+[; ;main.c: 90: void main(void) {
+[v _main `(v ~T0 @X0 1 ef ]
+{
+[e :U _main ]
+[f ]
+"92
+[; ;main.c: 92:   SYSTEM_Initialize();
+[e ( _SYSTEM_Initialize ..  ]
+"95
+[; ;main.c: 95:   AutoBaud_Detect();
+[e ( _AutoBaud_Detect ..  ]
+"101
+[; ;main.c: 101:   (INTCONbits.GIE = 1);
+[e = . . _INTCONbits 0 7 -> -> 1 `i `uc ]
+"104
+[; ;main.c: 104:   (INTCONbits.PEIE = 1);
+[e = . . _INTCONbits 0 6 -> -> 1 `i `uc ]
+"112
+[; ;main.c: 112:   while (1) {
+[e :U 376 ]
+{
+"114
+[; ;main.c: 114:     LIN_handler();
+[e ( _LIN_handler ..  ]
+"115
+[; ;main.c: 115:   }
+}
+[e :U 375 ]
+[e $U 376  ]
+[e :U 377 ]
+"116
+[; ;main.c: 116: }
+[e :UE 374 ]
 }

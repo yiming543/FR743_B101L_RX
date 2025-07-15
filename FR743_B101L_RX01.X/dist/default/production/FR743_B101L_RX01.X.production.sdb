@@ -18,7 +18,7 @@ TRANSMIT 0
 RECEIVE 1
 ERROR 2
 ]
-"91
+"92
 [e E204 . `uc
 LIN_RX_IDLE 0
 LIN_RX_BREAK 1
@@ -31,7 +31,7 @@ LIN_RX_RDY 7
 LIN_RX_ERROR 8
 LIN_RX_WAIT 9
 ]
-"138
+"139
 [e E221 . `uc
 CMD 0
 TYPE 1
@@ -63,7 +63,7 @@ ERROR 2
 [e E3353 . `uc
 SW_STATE 1
 ]
-"81 D:\yiming\work\FR743_B101L_RX01.X\main.c
+"114 D:\yiming\work\FR743_B101L_RX01.X\main.c
 [e E3266 . `uc
 LIN_RX_IDLE 0
 LIN_RX_BREAK 1
@@ -88,7 +88,9 @@ LIN_RX_WAIT 9
 [v ___eecpymem __eecpymem `(v  1 e 1 0 ]
 "39
 [v ___memcpyee __memcpyee `(v  1 e 1 0 ]
-"58 D:\yiming\work\FR743_B101L_RX01.X\main.c
+"61 D:\yiming\work\FR743_B101L_RX01.X\main.c
+[v _AutoBaud_Detect AutoBaud_Detect `(v  1 e 1 0 ]
+"90
 [v _main main `(v  1 e 1 0 ]
 "88 D:\yiming\work\FR743_B101L_RX01.X\mcc_generated_files/eusart.c
 [v _EUSART_Initialize EUSART_Initialize `(v  1 e 1 0 ]
@@ -138,36 +140,36 @@ LIN_RX_WAIT 9
 [v _processLIN processLIN `(v  1 e 1 0 ]
 "57 D:\yiming\work\FR743_B101L_RX01.X\mcc_generated_files/LINDrivers/lin_slave.c
 [v _LIN_init LIN_init `(v  1 e 1 0 ]
-"66
+"67
 [v _LIN_queuePacket LIN_queuePacket `(v  1 e 1 0 ]
-"91
+"92
 [v _LIN_handler LIN_handler `(E204  1 e 1 0 ]
-"192
+"193
 [v _LIN_sendPacket LIN_sendPacket `(v  1 e 1 0 ]
-"202
+"203
 [v _LIN_getPacket LIN_getPacket `(uc  1 e 1 0 ]
-"219
+"218
 [v _LIN_getFromTable LIN_getFromTable `(uc  1 e 1 0 ]
 "249
 [v _LIN_checkPID LIN_checkPID `(a  1 e 1 0 ]
-"260
+"259
 [v _LIN_calcParity LIN_calcParity `(uc  1 e 1 0 ]
-"278
+"277
 [v _LIN_getChecksum LIN_getChecksum `(uc  1 e 1 0 ]
-"291
+"290
 [v _LIN_startTimer LIN_startTimer `(v  1 e 1 0 ]
-"298
+"297
 [v _LIN_timerHandler LIN_timerHandler `(v  1 e 1 0 ]
-"308
+"306
 [v _LIN_setTimerHandler LIN_setTimerHandler `(v  1 e 1 0 ]
-"312
+"308
 [v _LIN_stopTimer LIN_stopTimer `(v  1 e 1 0 ]
 [v i1_LIN_stopTimer LIN_stopTimer `(v  1 e 1 0 ]
-"319
+"315
 [v _LIN_enableRx LIN_enableRx `(v  1 e 1 0 ]
-"324
+"320
 [v _LIN_disableRx LIN_disableRx `(v  1 e 1 0 ]
-"329
+"325
 [v _LIN_breakCheck LIN_breakCheck `(a  1 e 1 0 ]
 "50 D:\yiming\work\FR743_B101L_RX01.X\mcc_generated_files/mcc.c
 [v _SYSTEM_Initialize SYSTEM_Initialize `(v  1 e 1 0 ]
@@ -334,6 +336,18 @@ LIN_RX_WAIT 9
 [v _TXSTAbits TXSTAbits `VES208  1 e 1 @414 ]
 "3644
 [v _BAUDCON BAUDCON `VEuc  1 e 1 @415 ]
+[s S865 . 1 `uc 1 ABDEN 1 0 :1:0 
+`uc 1 WUE 1 0 :1:1 
+`uc 1 . 1 0 :1:2 
+`uc 1 BRG16 1 0 :1:3 
+`uc 1 SCKP 1 0 :1:4 
+`uc 1 . 1 0 :1:5 
+`uc 1 RCIDL 1 0 :1:6 
+`uc 1 ABDOVF 1 0 :1:7 
+]
+"3661
+[u S874 . 1 `S865 1 . 1 0 ]
+[v _BAUDCONbits BAUDCONbits `VES874  1 e 1 @415 ]
 "3696
 [v _WPUB WPUB `VEuc  1 e 1 @525 ]
 "3766
@@ -398,10 +412,10 @@ LIN_RX_WAIT 9
 [v _timer0ReloadVal timer0ReloadVal `VEuc  1 e 1 0 ]
 "59
 [v _TMR0_InterruptHandler TMR0_InterruptHandler `*.37(v  1 e 2 0 ]
-"58 D:\yiming\work\FR743_B101L_RX01.X\main.c
+"90 D:\yiming\work\FR743_B101L_RX01.X\main.c
 [v _main main `(v  1 e 1 0 ]
 {
-"83
+"116
 } 0
 "50 D:\yiming\work\FR743_B101L_RX01.X\mcc_generated_files/mcc.c
 [v _SYSTEM_Initialize SYSTEM_Initialize `(v  1 e 1 0 ]
@@ -440,14 +454,14 @@ LIN_RX_WAIT 9
 [v LIN_init@tableLength tableLength `uc  1 p 1 wreg ]
 [s S26 . 5 `uc 1 cmd 1 0 `E216 1 type 1 1 `uc 1 length 1 2 `*.39uc 1 data 2 3 ]
 [v LIN_init@command command `DC*.25DCS26  1 p 2 2 ]
+"58
 [v LIN_init@processData processData `*.37(v  1 p 2 4 ]
 [v LIN_init@tableLength tableLength `uc  1 p 1 6 ]
-"64
+"65
 } 0
-"308
+"306
 [v _LIN_setTimerHandler LIN_setTimerHandler `(v  1 e 1 0 ]
 {
-"310
 } 0
 "125 D:\yiming\work\FR743_B101L_RX01.X\mcc_generated_files/tmr0.c
 [v _TMR0_SetInterruptHandler TMR0_SetInterruptHandler `(v  1 e 1 0 ]
@@ -490,14 +504,14 @@ LIN_RX_WAIT 9
 [v EUSART_SetErrorHandler@interruptHandler interruptHandler `*.37(v  1 p 2 0 ]
 "274
 } 0
-"91 D:\yiming\work\FR743_B101L_RX01.X\mcc_generated_files/LINDrivers/lin_slave.c
+"92 D:\yiming\work\FR743_B101L_RX01.X\mcc_generated_files/LINDrivers/lin_slave.c
 [v _LIN_handler LIN_handler `(E204  1 e 1 0 ]
 {
-"92
-[v LIN_handler@LIN_rxState LIN_rxState `E204  1 s 1 LIN_rxState ]
 "93
+[v LIN_handler@LIN_rxState LIN_rxState `E204  1 s 1 LIN_rxState ]
+"94
 [v LIN_handler@rxDataIndex rxDataIndex `uc  1 s 1 rxDataIndex ]
-"190
+"191
 } 0
 "65 D:\yiming\work\FR743_B101L_RX01.X\mcc_generated_files/LINDrivers/lin_app.c
 [v _processLIN processLIN `(v  1 e 1 0 ]
@@ -508,14 +522,14 @@ LIN_RX_WAIT 9
 [v processLIN@cmd cmd `uc  1 a 1 8 ]
 "117
 } 0
-"202 D:\yiming\work\FR743_B101L_RX01.X\mcc_generated_files/LINDrivers/lin_slave.c
+"203 D:\yiming\work\FR743_B101L_RX01.X\mcc_generated_files/LINDrivers/lin_slave.c
 [v _LIN_getPacket LIN_getPacket `(uc  1 e 1 0 ]
 {
-"203
+"204
 [v LIN_getPacket@cmd cmd `uc  1 a 1 10 ]
-"202
+"203
 [v LIN_getPacket@data data `*.4uc  1 p 1 9 ]
-"217
+"216
 } 0
 "3 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\memset.c
 [v _memset memset `(*.39v  1 e 2 0 ]
@@ -528,18 +542,18 @@ LIN_RX_WAIT 9
 [v memset@n n `ui  1 p 2 4 ]
 "10
 } 0
-"312 D:\yiming\work\FR743_B101L_RX01.X\mcc_generated_files/LINDrivers/lin_slave.c
+"308 D:\yiming\work\FR743_B101L_RX01.X\mcc_generated_files/LINDrivers/lin_slave.c
 [v _LIN_stopTimer LIN_stopTimer `(v  1 e 1 0 ]
 {
-"317
+"313
 } 0
-"291
+"290
 [v _LIN_startTimer LIN_startTimer `(v  1 e 1 0 ]
 {
 [v LIN_startTimer@timeout timeout `uc  1 p 1 wreg ]
 [v LIN_startTimer@timeout timeout `uc  1 p 1 wreg ]
 [v LIN_startTimer@timeout timeout `uc  1 p 1 1 ]
-"296
+"295
 } 0
 "96 D:\yiming\work\FR743_B101L_RX01.X\mcc_generated_files/tmr0.c
 [v _TMR0_WriteTimer TMR0_WriteTimer `(v  1 e 1 0 ]
@@ -550,19 +564,19 @@ LIN_RX_WAIT 9
 [v TMR0_WriteTimer@timerVal timerVal `uc  1 p 1 0 ]
 "100
 } 0
-"66 D:\yiming\work\FR743_B101L_RX01.X\mcc_generated_files/LINDrivers/lin_slave.c
+"67 D:\yiming\work\FR743_B101L_RX01.X\mcc_generated_files/LINDrivers/lin_slave.c
 [v _LIN_queuePacket LIN_queuePacket `(v  1 e 1 0 ]
 {
 [v LIN_queuePacket@cmd cmd `uc  1 p 1 wreg ]
-"70
+"72
 [v LIN_queuePacket@i i `uc  1 a 1 2 ]
 [s S26 . 5 `uc 1 cmd 1 0 `E216 1 type 1 1 `uc 1 length 1 2 `*.39uc 1 data 2 3 ]
-"67
+"68
 [v LIN_queuePacket@tempSchedule tempSchedule `*.25DCS26  1 a 2 3 ]
-"66
+"67
 [v LIN_queuePacket@cmd cmd `uc  1 p 1 wreg ]
 [v LIN_queuePacket@cmd cmd `uc  1 p 1 1 ]
-"89
+"90
 } 0
 "4 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\memcpy.c
 [v _memcpy memcpy `(*.39v  1 e 2 0 ]
@@ -579,34 +593,34 @@ LIN_RX_WAIT 9
 [v memcpy@n n `ui  1 p 2 4 ]
 "18
 } 0
-"192 D:\yiming\work\FR743_B101L_RX01.X\mcc_generated_files/LINDrivers/lin_slave.c
+"193 D:\yiming\work\FR743_B101L_RX01.X\mcc_generated_files/LINDrivers/lin_slave.c
 [v _LIN_sendPacket LIN_sendPacket `(v  1 e 1 0 ]
 {
 [v LIN_sendPacket@length length `uc  1 p 1 wreg ]
-"195
+"196
 [v LIN_sendPacket@i i `uc  1 a 1 13 ]
-"192
+"193
 [v LIN_sendPacket@length length `uc  1 p 1 wreg ]
 [v LIN_sendPacket@pid pid `uc  1 p 1 9 ]
 [v LIN_sendPacket@data data `*.39uc  1 p 2 10 ]
-"195
+"196
 [v LIN_sendPacket@length length `uc  1 p 1 12 ]
-"200
+"201
 } 0
-"278
+"277
 [v _LIN_getChecksum LIN_getChecksum `(uc  1 e 1 0 ]
 {
 [v LIN_getChecksum@length length `uc  1 p 1 wreg ]
-"281
+"280
 [v LIN_getChecksum@i i `uc  1 a 1 6 ]
-"279
-[v LIN_getChecksum@checksum checksum `us  1 a 2 7 ]
 "278
+[v LIN_getChecksum@checksum checksum `us  1 a 2 7 ]
+"277
 [v LIN_getChecksum@length length `uc  1 p 1 wreg ]
 [v LIN_getChecksum@pid pid `uc  1 p 1 0 ]
 [v LIN_getChecksum@data data `*.39uc  1 p 2 1 ]
 [v LIN_getChecksum@length length `uc  1 p 1 5 ]
-"289
+"288
 } 0
 "173 D:\yiming\work\FR743_B101L_RX01.X\mcc_generated_files/eusart.c
 [v _EUSART_Write EUSART_Write `(v  1 e 1 0 ]
@@ -616,15 +630,15 @@ LIN_RX_WAIT 9
 [v EUSART_Write@txData txData `uc  1 p 1 0 ]
 "194
 } 0
-"319 D:\yiming\work\FR743_B101L_RX01.X\mcc_generated_files/LINDrivers/lin_slave.c
+"315 D:\yiming\work\FR743_B101L_RX01.X\mcc_generated_files/LINDrivers/lin_slave.c
 [v _LIN_enableRx LIN_enableRx `(v  1 e 1 0 ]
 {
-"322
+"318
 } 0
-"324
+"320
 [v _LIN_disableRx LIN_disableRx `(v  1 e 1 0 ]
 {
-"327
+"323
 } 0
 "249
 [v _LIN_checkPID LIN_checkPID `(a  1 e 1 0 ]
@@ -632,24 +646,24 @@ LIN_RX_WAIT 9
 [v LIN_checkPID@pid pid `uc  1 p 1 wreg ]
 [v LIN_checkPID@pid pid `uc  1 p 1 wreg ]
 [v LIN_checkPID@pid pid `uc  1 p 1 7 ]
-"258
+"257
 } 0
-"219
+"218
 [v _LIN_getFromTable LIN_getFromTable `(uc  1 e 1 0 ]
 {
 [v LIN_getFromTable@cmd cmd `uc  1 p 1 wreg ]
 "224
 [v LIN_getFromTable@length length `uc  1 a 1 4 ]
 [s S26 . 5 `uc 1 cmd 1 0 `E216 1 type 1 1 `uc 1 length 1 2 `*.39uc 1 data 2 3 ]
-"220
-[v LIN_getFromTable@rxCommand rxCommand `*.25DCS26  1 a 2 5 ]
 "219
+[v LIN_getFromTable@rxCommand rxCommand `*.25DCS26  1 a 2 5 ]
+"218
 [v LIN_getFromTable@cmd cmd `uc  1 p 1 wreg ]
 [v LIN_getFromTable@param param `E221  1 p 1 0 ]
 [v LIN_getFromTable@cmd cmd `uc  1 p 1 3 ]
 "247
 } 0
-"260
+"259
 [v _LIN_calcParity LIN_calcParity `(uc  1 e 1 0 ]
 {
 [v LIN_calcParity@CMD CMD `uc  1 p 1 wreg ]
@@ -662,19 +676,19 @@ LIN_RX_WAIT 9
 `uc 1 P0 1 0 :1:6 
 `uc 1 P1 1 0 :1:7 
 ]
-"261
+"260
 [u S243 . 1 `S234 1 . 1 0 `uc 1 rawPID 1 0 ]
 [v LIN_calcParity@PID PID `S243  1 a 1 2 ]
-"260
+"259
 [v LIN_calcParity@CMD CMD `uc  1 p 1 wreg ]
-"262
+"261
 [v LIN_calcParity@CMD CMD `uc  1 p 1 1 ]
-"276
+"275
 } 0
-"329
+"325
 [v _LIN_breakCheck LIN_breakCheck `(a  1 e 1 0 ]
 {
-"336
+"332
 } 0
 "75 D:\yiming\work\FR743_B101L_RX01.X\mcc_generated_files/eusart.h
 "76
@@ -701,6 +715,13 @@ LIN_RX_WAIT 9
 {
 "140
 } 0
+"61 D:\yiming\work\FR743_B101L_RX01.X\main.c
+[v _AutoBaud_Detect AutoBaud_Detect `(v  1 e 1 0 ]
+{
+"64
+[v AutoBaud_Detect@i i `uc  1 a 1 2 ]
+"85
+} 0
 "52 D:\yiming\work\FR743_B101L_RX01.X\mcc_generated_files/interrupt_manager.c
 [v _INTERRUPT_InterruptManager INTERRUPT_InterruptManager `II(v  1 e 1 0 ]
 {
@@ -711,20 +732,20 @@ LIN_RX_WAIT 9
 {
 "122
 } 0
-"298 D:\yiming\work\FR743_B101L_RX01.X\mcc_generated_files/LINDrivers/lin_slave.c
+"297 D:\yiming\work\FR743_B101L_RX01.X\mcc_generated_files/LINDrivers/lin_slave.c
 [v _LIN_timerHandler LIN_timerHandler `(v  1 e 1 0 ]
 {
-"306
+"304
 } 0
 "129 D:\yiming\work\FR743_B101L_RX01.X\mcc_generated_files/tmr0.c
 [v _TMR0_DefaultInterruptHandler TMR0_DefaultInterruptHandler `(v  1 e 1 0 ]
 {
 "132
 } 0
-"312 D:\yiming\work\FR743_B101L_RX01.X\mcc_generated_files/LINDrivers/lin_slave.c
+"308 D:\yiming\work\FR743_B101L_RX01.X\mcc_generated_files/LINDrivers/lin_slave.c
 [v i1_LIN_stopTimer LIN_stopTimer `(v  1 e 1 0 ]
 {
-"317
+"313
 } 0
 "197 D:\yiming\work\FR743_B101L_RX01.X\mcc_generated_files/eusart.c
 [v _EUSART_Transmit_ISR EUSART_Transmit_ISR `(v  1 e 1 0 ]
