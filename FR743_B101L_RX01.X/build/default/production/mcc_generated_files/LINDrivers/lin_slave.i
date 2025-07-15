@@ -5198,24 +5198,11 @@ void LIN_queuePacket(uint8_t cmd) {
   LIN_sendPacket(LIN_packet.length, LIN_packet.PID, LIN_packet.data);
 }
 
-void AutoBaud_Detect(void) {
-  uint8_t sync;
+void AutoBaud_Detect_ON(void) {
+
   BAUDCONbits.ABDOVF = 0;
   BAUDCONbits.ABDEN = 1;
   BAUDCONbits.WUE = 1;
-
-  while (LIN_timerRunning==1) {
-    if (!BAUDCONbits.ABDEN) {
-      break;
-    }
-  }
-
-
-
-
-  sync = RCREG;
-
-  __nop();
 }
 
 lin_rx_state_t LIN_handler(void) {
@@ -5231,31 +5218,21 @@ lin_rx_state_t LIN_handler(void) {
 
   switch (LIN_rxState) {
   case LIN_RX_IDLE:
-
-
       LIN_startTimer(41);
       LIN_rxInProgress = 1;
 
+      AutoBaud_Detect_ON();
       LIN_rxState = LIN_RX_SYNC;
-# 142 "mcc_generated_files/LINDrivers/lin_slave.c"
     break;
+# 127 "mcc_generated_files/LINDrivers/lin_slave.c"
   case LIN_RX_SYNC:
-    AutoBaud_Detect();
-    if (BAUDCONbits.ABDOVF == 1) {
-      BAUDCONbits.ABDEN = 0;
-      BAUDCONbits.ABDOVF =0;
-      LIN_rxState = LIN_RX_ERROR;
-    } else {
+    if (!BAUDCONbits.ABDEN) {
       LIN_rxState = LIN_RX_PID;
 
-
-      RCSTA=0;
-      TXSTA=0;
-      BAUDCON=0;
+      LIN_disableRx();
       EUSART_Initialize();
       PIE1bits.RCIE = 1;
     }
-# 167 "mcc_generated_files/LINDrivers/lin_slave.c"
     break;
   case LIN_RX_PID:
     if (EUSART_is_rx_ready() > 0) {

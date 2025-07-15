@@ -7,7 +7,7 @@
 # 1 "C:/Users/t00904/.mchp_packs/Microchip/PIC12-16F1xxx_DFP/1.2.63/xc8\\pic\\include/language_support.h" 1 3
 # 2 "<built-in>" 2
 # 1 "main.c" 2
-# 60 "main.c"
+# 66 "main.c"
 # 1 "./mcc_generated_files/mcc.h" 1
 # 49 "./mcc_generated_files/mcc.h"
 # 1 "C:/Users/t00904/.mchp_packs/Microchip/PIC12-16F1xxx_DFP/1.2.63/xc8\\pic\\include/xc.h" 1 3
@@ -5338,12 +5338,21 @@ void SYSTEM_Initialize(void);
 void OSCILLATOR_Initialize(void);
 # 98 "./mcc_generated_files/mcc.h"
 void WDT_Initialize(void);
-# 61 "main.c" 2
-# 93 "main.c"
+# 67 "main.c" 2
+
+
+
+
+
+
 void main(void) {
 
   SYSTEM_Initialize();
-# 104 "main.c"
+
+
+
+
+
   (INTCONbits.GIE = 1);
 
 

@@ -89,24 +89,11 @@ void LIN_queuePacket(uint8_t cmd) {
   LIN_sendPacket(LIN_packet.length, LIN_packet.PID, LIN_packet.data);
 }
 
-void AutoBaud_Detect(void) {
-  uint8_t sync;
+void AutoBaud_Detect_ON(void) {
+  // uint8_t sync;
   BAUDCONbits.ABDOVF = 0;
   BAUDCONbits.ABDEN = 1;
   BAUDCONbits.WUE = 1;
-
-  while (LIN_timerRunning==1) {
-    if (!BAUDCONbits.ABDEN) {
-      break; // while
-    }
-  }
-
-  // if (!BAUDCONbits.ABDOVF) {
-  // } else {
-  // }
-  sync = RCREG; // 讀取sync field
-
-  NOP(); // 這裡可以放置斷點以便調試
 }
 
 lin_rx_state_t LIN_handler(void) {
@@ -122,15 +109,12 @@ lin_rx_state_t LIN_handler(void) {
 
   switch (LIN_rxState) {
   case LIN_RX_IDLE:
-//    if (EUSART_is_rx_ready() > 0) {
-      // Start Timer
       LIN_startTimer(READ_TIMEOUT);
       LIN_rxInProgress = true;
       // LIN_rxState = LIN_RX_BREAK;
+      AutoBaud_Detect_ON();
       LIN_rxState = LIN_RX_SYNC;
-      // PIE1bits.RCIE = 0;
-    // }
-    // break;
+    break;
   // case LIN_RX_BREAK:
   //   if (EUSART_is_rx_ready() > 0) {
   //     if (LIN_breakCheck() == true) { // Read Break
@@ -139,31 +123,15 @@ lin_rx_state_t LIN_handler(void) {
   //       LIN_rxState = LIN_RX_ERROR;
   //     }
   //   }
-    break;
+    // break;
   case LIN_RX_SYNC:
-    AutoBaud_Detect();
-    if (BAUDCONbits.ABDOVF == 1) {
-      BAUDCONbits.ABDEN = 0;
-      BAUDCONbits.ABDOVF =0;
-      LIN_rxState = LIN_RX_ERROR;
-    } else {
+    if (!BAUDCONbits.ABDEN) {
       LIN_rxState = LIN_RX_PID;
-      // LIN_startTimer(READ_TIMEOUT);
-      // LIN_rxInProgress = true;
-      RCSTA=0;
-      TXSTA=0;
-      BAUDCON=0;
+
+      LIN_disableRx();
       EUSART_Initialize();
       PIE1bits.RCIE = 1;
     }
-    // Wait for Sync Field
-    // if (EUSART_is_rx_ready() > 0) {
-    //   if (EUSART_Read() == 0x55) { // Read sync - discard
-    //     LIN_rxState = LIN_RX_PID;
-    //   } else {
-    //     LIN_rxState = LIN_RX_ERROR;
-    //   }
-    // }
     break;
   case LIN_RX_PID:
     if (EUSART_is_rx_ready() > 0) {
