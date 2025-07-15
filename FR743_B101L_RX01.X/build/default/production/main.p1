@@ -579,11 +579,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;main.c: 62:   uint8_t sync;
 [v _sync `uc ~T0 @X0 1 a ]
 "64
-[; ;main.c: 64:   for (uint8_t i = 0; i < 3; i++) {
+[; ;main.c: 64:   for (uint8_t i = 0; i < 10; i++) {
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 3 `i 365  ]
+[e $ < -> _i `i -> 10 `i 365  ]
 [e $U 366  ]
 [e :U 365 ]
 {
@@ -647,7 +647,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;main.c: 82:   }
 }
 [e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 3 `i 365  ]
+[e $ < -> _i `i -> 10 `i 365  ]
 [e :U 366 ]
 }
 "84

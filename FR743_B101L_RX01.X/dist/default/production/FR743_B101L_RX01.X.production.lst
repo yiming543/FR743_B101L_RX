@@ -1,7 +1,7 @@
 
 
 Microchip MPLAB XC8 Assembler V3.00 build 20241204225717 
-                                                                                               Tue Jul 15 08:27:24 2025
+                                                                                               Tue Jul 15 08:32:18 2025
 
 Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og1 
      1                           	processor	16F1936
@@ -6022,7 +6022,7 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og1
   5941                           ; Regs used in _AutoBaud_Detect: [wreg+status,2+status,0]
   5942                           
   5943                           
-  5944                           ;main.c: 62:   uint8_t sync;;main.c: 64:   for (uint8_t i = 0; i < 3; i++) {
+  5944                           ;main.c: 62:   uint8_t sync;;main.c: 64:   for (uint8_t i = 0; i < 10; i++) {
   5945     03C6  01F2               	clrf	AutoBaud_Detect@i
   5946     03C7                     l533:
   5947                           
@@ -6096,7 +6096,7 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og1
   6015     03E8  3001               	movlw	1
   6016     03E9  07F2               	addwf	AutoBaud_Detect@i,f
   6017     03EA                     l1667:
-  6018     03EA  3003               	movlw	3
+  6018     03EA  300A               	movlw	10
   6019     03EB  0272               	subwf	AutoBaud_Detect@i,w
   6020     03EC  1C03               	skipc
   6021     03ED  2BEF               	goto	u821
@@ -7489,7 +7489,7 @@ DATA                 0      0      99      0.0%
 
 
 Microchip Technology PIC Macro Assembler V3.00 build 20241204225717 
-Symbol Table                                                                                   Tue Jul 15 08:27:24 2025
+Symbol Table                                                                                   Tue Jul 15 08:32:18 2025
 
                        __end_of_LIN_breakCheck 0577                  ?_EUSART_SetRxInterruptHandler 0070  
                         __end_of_LIN_getPacket 041C                          ??_LIN_setTimerHandler 0072  

@@ -5345,7 +5345,7 @@ void WDT_Initialize(void);
 void AutoBaud_Detect(void) {
   uint8_t sync;
 
-  for (uint8_t i = 0; i < 3; i++) {
+  for (uint8_t i = 0; i < 10; i++) {
 
     BAUDCONbits.ABDOVF = 0;
     BAUDCONbits.ABDEN = 1;

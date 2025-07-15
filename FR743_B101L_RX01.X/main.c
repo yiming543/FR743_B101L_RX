@@ -7,8 +7,8 @@
 //  D1 bit4 左方向
 //  D1 bit5 右方向
 
-//20250715 CS:8583 V02
-//add UART auto baud,power on 最多做3次.
+//20250715 CS:858A V02
+//add UART auto baud,power on 最多做10次.
 
 
 /**
@@ -61,7 +61,7 @@
 void AutoBaud_Detect(void) {
   uint8_t sync;
 
-  for (uint8_t i = 0; i < 3; i++) {
+  for (uint8_t i = 0; i < 10; i++) {
 
     BAUDCONbits.ABDOVF = 0;
     BAUDCONbits.ABDEN = 1;
