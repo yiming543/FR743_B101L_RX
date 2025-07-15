@@ -104,10 +104,10 @@ void EUSART_Initialize(void)
     TXSTA = 0x24;
 
     // SPBRGL 64; 
-    SPBRGL = 0x40;
+    // SPBRGL = 0x40;
 
     // SPBRGH 3; 
-    SPBRGH = 0x03;
+    // SPBRGH = 0x03;
 
 
     EUSART_SetFramingErrorHandler(EUSART_DefaultFramingErrorHandler);
@@ -126,7 +126,7 @@ void EUSART_Initialize(void)
     eusartRxCount = 0;
 
     // enable receive interrupt
-    PIE1bits.RCIE = 1;
+    PIE1bits.RCIE = 0;
 }
 
 bool EUSART_is_tx_ready(void)

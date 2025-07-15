@@ -652,11 +652,11 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="LIN Slave" name="pubSubselectedEusart"/>
-         <value>8145.60025360203</value>
+         <value>4107.504834945683</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="LIN Slave" name="pubSubselectedTimer"/>
-         <value>1443.6074231703776</value>
+         <value>9189.305714383812</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="LIN Slave" name="selectedEusart"/>

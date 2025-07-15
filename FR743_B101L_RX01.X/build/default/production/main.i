@@ -7,7 +7,7 @@
 # 1 "C:/Users/t00904/.mchp_packs/Microchip/PIC12-16F1xxx_DFP/1.2.63/xc8\\pic\\include/language_support.h" 1 3
 # 2 "<built-in>" 2
 # 1 "main.c" 2
-# 57 "main.c"
+# 60 "main.c"
 # 1 "./mcc_generated_files/mcc.h" 1
 # 49 "./mcc_generated_files/mcc.h"
 # 1 "C:/Users/t00904/.mchp_packs/Microchip/PIC12-16F1xxx_DFP/1.2.63/xc8\\pic\\include/xc.h" 1 3
@@ -5338,50 +5338,12 @@ void SYSTEM_Initialize(void);
 void OSCILLATOR_Initialize(void);
 # 98 "./mcc_generated_files/mcc.h"
 void WDT_Initialize(void);
-# 58 "main.c" 2
-
-
-
-void AutoBaud_Detect(void) {
-  uint8_t sync;
-
-  for (uint8_t i = 0; i < 10; i++) {
-
-    BAUDCONbits.ABDOVF = 0;
-    BAUDCONbits.ABDEN = 1;
-    BAUDCONbits.WUE = 1;
-
-    while (!BAUDCONbits.ABDOVF) {
-      if (!BAUDCONbits.ABDEN) {
-        break;
-      }
-    }
-
-    if (!BAUDCONbits.ABDOVF) {
-      break;
-    } else {
-      _delay((unsigned long)((100)*(32000000/4000.0)));
-    }
-    sync = RCREG;
-  }
-
-  __nop();
-}
-
-
-
-
+# 61 "main.c" 2
+# 93 "main.c"
 void main(void) {
 
   SYSTEM_Initialize();
-
-
-  AutoBaud_Detect();
-
-
-
-
-
+# 104 "main.c"
   (INTCONbits.GIE = 1);
 
 

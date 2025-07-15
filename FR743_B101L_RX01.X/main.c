@@ -10,6 +10,9 @@
 //20250715 CS:858A V02
 //add UART auto baud,power on 最多做10次.
 
+//20250715 CS:97D3 V03
+//modify LIN auto baud 在每次接收同步信號時.
+
 
 /**
   Generated Main Source File
@@ -58,31 +61,31 @@
 #include <pic.h>
 #include <pic16f1936.h>
 
-void AutoBaud_Detect(void) {
-  uint8_t sync;
+// void AutoBaud_Detect(void) {
+//   uint8_t sync;
 
-  for (uint8_t i = 0; i < 10; i++) {
+//   for (uint8_t i = 0; i < 10; i++) {
 
-    BAUDCONbits.ABDOVF = 0;
-    BAUDCONbits.ABDEN = 1;
-    BAUDCONbits.WUE = 1;
+//     BAUDCONbits.ABDOVF = 0;
+//     BAUDCONbits.ABDEN = 1;
+//     BAUDCONbits.WUE = 1;
 
-    while (!BAUDCONbits.ABDOVF) {
-      if (!BAUDCONbits.ABDEN) {
-        break; // while
-      }
-    }
+//     while (!BAUDCONbits.ABDOVF) {
+//       if (!BAUDCONbits.ABDEN) {
+//         break; // while
+//       }
+//     }
 
-    if (!BAUDCONbits.ABDOVF) {
-      break; // for
-    } else {
-      __delay_ms(100); // 等待100ms
-    }
-    sync = RCREG; // 讀取sync field
-  }
+//     if (!BAUDCONbits.ABDOVF) {
+//       break; // for
+//     } else {
+//       __delay_ms(100); // 等待100ms
+//     }
+//     sync = RCREG; // 讀取sync field
+//   }
 
-  NOP(); // 這裡可以放置斷點以便調試
-}
+//   NOP(); // 這裡可以放置斷點以便調試
+// }
 
 /*
                          Main application
@@ -92,7 +95,7 @@ void main(void) {
   SYSTEM_Initialize();
 
   // Call the auto baud detection function
-  AutoBaud_Detect();
+  // AutoBaud_Detect();
 
   // When using interrupts, you need to set the Global and Peripheral Interrupt
   // Enable bits Use the following macros to:

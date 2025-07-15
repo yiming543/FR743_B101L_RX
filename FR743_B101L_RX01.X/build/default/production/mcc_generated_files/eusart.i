@@ -5015,14 +5015,7 @@ void EUSART_Initialize(void)
 
 
     TXSTA = 0x24;
-
-
-    SPBRGL = 0x40;
-
-
-    SPBRGH = 0x03;
-
-
+# 113 "mcc_generated_files/eusart.c"
     EUSART_SetFramingErrorHandler(EUSART_DefaultFramingErrorHandler);
     EUSART_SetOverrunErrorHandler(EUSART_DefaultOverrunErrorHandler);
     EUSART_SetErrorHandler(EUSART_DefaultErrorHandler);
@@ -5039,7 +5032,7 @@ void EUSART_Initialize(void)
     eusartRxCount = 0;
 
 
-    PIE1bits.RCIE = 1;
+    PIE1bits.RCIE = 0;
 }
 
 _Bool EUSART_is_tx_ready(void)
