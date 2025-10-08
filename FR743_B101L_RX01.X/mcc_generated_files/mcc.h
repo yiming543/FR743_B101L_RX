@@ -55,7 +55,7 @@
 #include "interrupt_manager.h"
 #include "tmr0.h"
 #include "eusart.h"
-#include "LINDrivers/lin_app.h"
+#include "../LINDrivers/lin_app.h"
 
 
 

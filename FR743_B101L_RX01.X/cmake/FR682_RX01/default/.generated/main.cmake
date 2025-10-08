@@ -25,15 +25,17 @@ add_library(FR682_RX01_default_default_XC8_compile OBJECT ${FR682_RX01_default_d
     list(APPEND FR682_RX01_default_library_list "$<TARGET_OBJECTS:FR682_RX01_default_default_XC8_compile>")
 endif()
 
+add_executable(FR682_RX01_default_image_FgcuHvTn ${FR682_RX01_default_library_list})
 
-add_executable(${FR682_RX01_default_image_name} ${FR682_RX01_default_library_list})
-set_target_properties(${FR682_RX01_default_image_name} PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${FR682_RX01_default_output_dir})
+set_target_properties(FR682_RX01_default_image_FgcuHvTn PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${FR682_RX01_default_output_dir})
+set_target_properties(FR682_RX01_default_image_FgcuHvTn PROPERTIES OUTPUT_NAME "default")
+set_target_properties(FR682_RX01_default_image_FgcuHvTn PROPERTIES SUFFIX ".elf")
 
-target_link_libraries(${FR682_RX01_default_image_name} PRIVATE ${FR682_RX01_default_default_XC8_FILE_TYPE_link})
+target_link_libraries(FR682_RX01_default_image_FgcuHvTn PRIVATE ${FR682_RX01_default_default_XC8_FILE_TYPE_link})
+
 
 # Add the link options from the rule file.
-FR682_RX01_default_link_rule(${FR682_RX01_default_image_name})
-
+FR682_RX01_default_link_rule(FR682_RX01_default_image_FgcuHvTn)
 
 
 
