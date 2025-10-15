@@ -98,14 +98,14 @@
 
 // Const 近燈碼 As Integer = &H8   'D4
 // Const 行車碼 As Integer = &H3   'D4
-
+//ford ranger 2024
 #define MODE_OFF_DRL_24 0x51
 #define MODE_POS_24 0x14
 #define MODE_POS_24_2 0x12
 #define MODE_AUTO_NIGHT_24 0x94
 #define MODE_AUTO_NIGHT_24_2 0xAC
 #define MODE_LOW_BEAM_24 0x13
-
+//ford ranger 2023
 #define MODE_OFF_DRL 0x49
 #define MODE_POS 0x0A
 #define MODE_AUTO_DAY 0x4C
