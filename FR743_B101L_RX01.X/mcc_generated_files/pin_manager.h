@@ -167,6 +167,17 @@
 #define LED1_SetAnalogMode()      do { ANSELBbits.ANSB5 = 1; } while(0)
 #define LED1_SetDigitalMode()     do { ANSELBbits.ANSB5 = 0; } while(0)
 
+// get/set TEST aliases
+#define TEST_TRIS                 TRISCbits.TRISC4
+#define TEST_LAT                  LATCbits.LATC4
+#define TEST_PORT                 PORTCbits.RC4
+#define TEST_SetHigh()            do { LATCbits.LATC4 = 1; } while(0)
+#define TEST_SetLow()             do { LATCbits.LATC4 = 0; } while(0)
+#define TEST_Toggle()             do { LATCbits.LATC4 = ~LATCbits.LATC4; } while(0)
+#define TEST_GetValue()           PORTCbits.RC4
+#define TEST_SetDigitalInput()    do { TRISCbits.TRISC4 = 1; } while(0)
+#define TEST_SetDigitalOutput()   do { TRISCbits.TRISC4 = 0; } while(0)
+
 // get/set RC6 procedures
 #define RC6_SetHigh()            do { LATCbits.LATC6 = 1; } while(0)
 #define RC6_SetLow()             do { LATCbits.LATC6 = 0; } while(0)

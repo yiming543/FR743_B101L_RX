@@ -29,20 +29,21 @@
 // bit6 晝行
 // bit3 行車
 
-//20250715 CS:858A V02
-//add UART auto baud,power on 最多做10次.
+// 20250715 CS:858A V02
+// add UART auto baud,power on 最多做10次.
 
-//20250715 CS:97D3 V03
-//modify LIN auto baud 在每次接收同步信號時.
+// 20250715 CS:97D3 V03
+// modify LIN auto baud 在每次接收同步信號時.
 
-//20250715 CS:67DB V04
-//modify LIN auto baud 在每次接收同步信號時,如果沒有接收到同步信號,則會重置UART,重新開始接收同步信號.
-//timer out 41ms
-//做auto baud時,不會卡死程式，會回到主程式執行，等到auto baud完成時(BAUDCONbits.ABDEN = 0)
-//才開始接收程式。
+// 20250715 CS:67DB V04
+// modify LIN auto baud
+// 在每次接收同步信號時,如果沒有接收到同步信號,則會重置UART,重新開始接收同步信號.
+// timer out 41ms
+// 做auto baud時,不會卡死程式，會回到主程式執行，等到auto
+// baud完成時(BAUDCONbits.ABDEN = 0) 才開始接收程式。
 
-//20250908 V05 CS:E04B
-//車輛實測 ford ranger 2023
+// 20250908 V05 CS:E04B
+// 車輛實測 ford ranger 2023
 // #define MODE_OFF_DRL 0x49
 // #define MODE_POS 0x0A
 // #define MODE_AUTO_DAY 0x4C
@@ -70,6 +71,14 @@
 // #define POS 0B00000011 // 0x03 data[4]
 // 收到LIN訊號後，設定燈號旗標
 
+// 20251022 V06 CS:99BC
+// modify AutoBaud_Detect function，只在開機時做auto baud偵測
+// 不在每次接收同步信號時做auto baud偵測，因為這樣會導致無法正確接收LIN訊號
+// 在每次接收同步信號時,如果沒有接收到同步信號,則會重置UART,重新開始接收同步信號.
+// timer out 15ms
+// LIN接收加入註解
+// 修改程式消失所有編譯警告
+// 使用控制模式點亮燈號，預留bit模式點亮燈號功能
 
 /**
   Generated Main Source File
@@ -114,17 +123,47 @@
     SOFTWARE.
  */
 
+#include "../LINDrivers/lin_slave.h"
 #include "mcc_generated_files/mcc.h"
-#include "LINDrivers/lin_slave.h"
 #include <pic.h>
 #include <pic16f1936.h>
+
+// 啟動UART自動波特率偵測
+void AutoBaud_Detect_ON(void) {
+  BAUDCONbits.ABDOVF = 0;
+  BAUDCONbits.ABDEN = 1;
+  BAUDCONbits.WUE = 1;
+}
+
+// 設定通信波特率
+void AutoBaud_Detect(void) {
+  while (1) {
+    AutoBaud_Detect_ON();
+    while (!BAUDCONbits.ABDOVF) // wait for auto baud to complete
+    {
+      if (!BAUDCONbits.ABDEN) // if auto baud is disabled, break the loop
+      {
+        break;
+      }
+    }
+
+    // 找到正確波特率,沒有超時離開無限迴圈
+    if (!BAUDCONbits.ABDOVF) // if auto baud overflowed, try again
+    {
+      break;
+    }
+  }
+}
 
 /*
                          Main application
  */
-void main(void) {
+
+int main(void) {
+
   // initialize the device
   SYSTEM_Initialize();
+  AutoBaud_Detect();
 
   // When using interrupts, you need to set the Global and Peripheral Interrupt
   // Enable bits Use the following macros to:
@@ -145,6 +184,7 @@ void main(void) {
     // Add your application code
     LIN_handler();
   }
+  return 0;
 }
 /**
  End of File

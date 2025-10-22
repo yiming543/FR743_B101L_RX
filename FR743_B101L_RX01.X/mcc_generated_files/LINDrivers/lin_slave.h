@@ -41,7 +41,7 @@
 #define	LIN_H
 #include <stdint.h>
 #include <stdbool.h>
-#include <string.h>
+// #include <string.h>
 
 typedef enum {
     LIN_RX_IDLE,
@@ -74,7 +74,7 @@ typedef union {
         uint8_t data[8];
         uint8_t checksum;
         lin_packet_type_t type;
-        int8_t length;
+        uint8_t length;
     };
     uint8_t rawPacket[13];
 }lin_packet_t;

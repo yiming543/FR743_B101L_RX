@@ -42,7 +42,41 @@
 #ifndef LIN_APP_H
 #define	LIN_APP_H
 
+//#include <stdint.h>
 #include "lin_slave.h"
+
+typedef union {
+  struct {
+    _Bool fDRL : 1;
+    _Bool fPOS : 1;
+    _Bool fLOBEAM : 1;
+    _Bool fHIBEAM : 1;
+    _Bool LoBeam : 1;
+    _Bool fLEFT : 1;
+    _Bool fRIGHT : 1;
+    _Bool b7 : 1;
+  };
+  uint8_t Byte;
+} LampFlags_t;
+
+typedef union {
+    struct {
+        unsigned mode: 3;
+        unsigned OverTaking: 1; //超車
+        unsigned TurnLeft: 1;   //左方向
+        unsigned TurnRight: 1;  //右方向
+        unsigned HighBeam: 1;   //遠燈
+    };
+    uint8_t Byte;
+}LampState_t;
+
+typedef enum {
+    eOFF_DRL = 0,
+    ePOS = 1,
+    eAUTO_DRL = 2,
+    eAUTO_LOBEAM_POS = 3,
+    eLOBEAM = 4
+}LampMode_t;
 
 typedef enum {
     SW_STATE = 0x01

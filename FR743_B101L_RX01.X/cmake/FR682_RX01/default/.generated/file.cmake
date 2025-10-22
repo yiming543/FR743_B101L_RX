@@ -17,6 +17,8 @@ endforeach()
 
 set(FR682_RX01_default_default_XC8_FILE_TYPE_compile
     "${CMAKE_CURRENT_SOURCE_DIR}/../../../main.c"
+    "${CMAKE_CURRENT_SOURCE_DIR}/../../../mcc_generated_files/LINDrivers/lin_app.c"
+    "${CMAKE_CURRENT_SOURCE_DIR}/../../../mcc_generated_files/LINDrivers/lin_slave.c"
     "${CMAKE_CURRENT_SOURCE_DIR}/../../../mcc_generated_files/device_config.c"
     "${CMAKE_CURRENT_SOURCE_DIR}/../../../mcc_generated_files/eusart.c"
     "${CMAKE_CURRENT_SOURCE_DIR}/../../../mcc_generated_files/interrupt_manager.c"
